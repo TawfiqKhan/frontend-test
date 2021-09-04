@@ -35,17 +35,17 @@ const Home = (): JSX.Element => {
 
   return (
     <main>
+      <Nav />
       <header className="header">
-        <Nav />
-        <img src={bg} className="main-img" alt="" />
-      </header>
-      <section className="intro-container">
-        <div>
+        <div className="main-img-container">
+          <img src={bg} className="main-img" alt="" />
+        </div>
+        <div className="intro-container">
           <h2>Patio furniture</h2>
           <button className="button">SHOP</button>
         </div>
-      </section>
-      <section>
+      </header>
+      <section className="products-parent-container">
         {products.length ? (
           <ProductList allProducts={products} addToCart={addToCart} />
         ) : null}

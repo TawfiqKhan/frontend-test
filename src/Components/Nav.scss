@@ -2,8 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  width: 100%;
+  padding: 0 2%;
   min-height: 60px;
+  background-color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  align-self: flex-start;
+  top: 0;
 
   a {
     font-family: "Montserrat", "sans-serif";
@@ -11,5 +17,8 @@
     font-size: 1.5rem;
     font-weight: 500;
     color: #000;
+  }
+  button {
+    margin-right: 4%;
   }
 }
