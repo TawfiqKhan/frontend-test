@@ -5,8 +5,16 @@ import Nav from "./Nav";
 import ProductList from "./Products/ProductList";
 import axios from "axios";
 
+interface Product {
+  title: string;
+  image: string;
+  brand: string;
+  price: number;
+}
+
 const Home = (): JSX.Element => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Array<any>>([]);
+  const [cart, setCart] = useState<Product[]>([]);
 
   const fetchData = async () => {
     const { data } = await axios.get(
@@ -18,6 +26,12 @@ const Home = (): JSX.Element => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const addToCart = (id: any): void => {
+    const productToAdd = products.filter((product) => product._id === id)[0];
+    const updatedItems = [...cart, productToAdd];
+    setCart(updatedItems);
+  };
 
   return (
     <main>
@@ -32,7 +46,9 @@ const Home = (): JSX.Element => {
         </div>
       </section>
       <section>
-        {products.length ? <ProductList allProducts={products} /> : null}
+        {products.length ? (
+          <ProductList allProducts={products} addToCart={addToCart} />
+        ) : null}
       </section>
     </main>
   );

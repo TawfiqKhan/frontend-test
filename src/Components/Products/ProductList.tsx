@@ -10,17 +10,20 @@ interface Product {
 }
 type Props = {
   allProducts: Array<Product>;
+  addToCart(item: any): void;
 };
 
-const ProductList = ({ allProducts }: Props): JSX.Element => {
+const ProductList = ({ allProducts, addToCart }: Props): JSX.Element => {
   console.log(allProducts);
   const productsTodisplay = allProducts.map((product) => (
     <ProductListItem
       key={product._id}
+      id={product._id}
       title={product.itemName}
       image={product.itemLink}
       brand={product.vendorName}
       price={product.MSRP}
+      addToCart={addToCart}
     />
   ));
   return <section className="productsContainer">{productsTodisplay}</section>;
