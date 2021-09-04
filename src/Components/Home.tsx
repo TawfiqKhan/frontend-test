@@ -9,6 +9,12 @@ const Home = (): JSX.Element => {
         <Nav />
         <img src={bg} className="main-img" alt="" />
       </header>
+      <section className="intro-container">
+        <div>
+          <h2>Patio furniture</h2>
+          <button className="button">SHOP</button>
+        </div>
+      </section>
     </main>
   );
 };
