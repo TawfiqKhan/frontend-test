@@ -27,7 +27,7 @@ const Home = (): JSX.Element => {
     setShowCart(!showCart);
   };
 
-  const addItem = (id: any): void => {
+  const addItem = (id: string): void => {
     const productToAdd = products.filter((product) => product._id === id)[0];
     const updatedItems = [...cart, productToAdd];
     setCart(updatedItems);
@@ -54,19 +54,22 @@ const Home = (): JSX.Element => {
           <h2>Patio furniture</h2>
           <button className="button">SHOP</button>
         </div>
-        <section className={!showCart ? "hide" : "cart-parent-container"}>
-          <Cart
-            allItems={cart}
-            toggleCart={toggleCart}
-            removeItem={removeItem}
-            clearCart={clearCart}
-          />
-        </section>
       </header>
       <section className="products-parent-container">
         {products.length ? (
           <ProductList allProducts={products} addItem={addItem} />
         ) : null}
+      </section>
+      <section
+        className={!showCart ? "hide" : "cart-parent-container"}
+        style={{ height: cart.length <= 1 ? "50%" : "100%" }}
+      >
+        <Cart
+          allItems={cart}
+          toggleCart={toggleCart}
+          removeItem={removeItem}
+          clearCart={clearCart}
+        />
       </section>
     </main>
   );

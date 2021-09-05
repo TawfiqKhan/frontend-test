@@ -4,7 +4,7 @@ interface Props {
   image: string;
   brand: string;
   price: number;
-  addItem(item: any): void;
+  addItem(item: string): void;
 }
 
 const ProductListItem: React.FC<Props> = ({

@@ -56,7 +56,7 @@ const Cart = ({
           <div>
             <span>Total:</span> <span>${totalPrice}</span>
           </div>
-          <button onClick={clearCart}>Check Out</button>
+          <button onClick={clearCart}>CHECKOUT</button>
         </div>
       ) : null}
     </div>
