@@ -1,19 +1,13 @@
 import "./ProductList.scss";
 import ProductListItem from "./ProductListItem";
+import { Product } from "../../interface/Product";
 
-interface Product {
-  _id: string;
-  itemName: string;
-  itemLink: string;
-  vendorName: string;
-  MSRP: number;
-}
 type Props = {
   allProducts: Array<Product>;
-  addToCart(item: any): void;
+  addItem(item: any): void;
 };
 
-const ProductList = ({ allProducts, addToCart }: Props): JSX.Element => {
+const ProductList = ({ allProducts, addItem }: Props): JSX.Element => {
   console.log(allProducts);
   const productsTodisplay = allProducts.map((product) => (
     <ProductListItem
@@ -23,7 +17,7 @@ const ProductList = ({ allProducts, addToCart }: Props): JSX.Element => {
       image={product.itemLink}
       brand={product.vendorName}
       price={product.MSRP}
-      addToCart={addToCart}
+      addItem={addItem}
     />
   ));
   return <section className="productsContainer">{productsTodisplay}</section>;

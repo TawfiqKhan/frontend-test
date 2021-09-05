@@ -4,14 +4,8 @@ import bg from "../images/bg-main.png";
 import Nav from "./Nav";
 import Cart from "./Cart/Cart";
 import ProductList from "./Products/ProductList";
+import { Product } from "../interface/Product";
 import axios from "axios";
-
-interface Product {
-  title: string;
-  image: string;
-  brand: string;
-  price: number;
-}
 
 const Home = (): JSX.Element => {
   const [products, setProducts] = useState<Array<any>>([]);
@@ -33,7 +27,13 @@ const Home = (): JSX.Element => {
     setShowCart(!showCart);
   };
 
-  const addToCart = (id: any): void => {
+  const addItem = (id: any): void => {
+    const productToAdd = products.filter((product) => product._id === id)[0];
+    const updatedItems = [...cart, productToAdd];
+    setCart(updatedItems);
+  };
+
+  const removeItem = (id: any): void => {
     const productToAdd = products.filter((product) => product._id === id)[0];
     const updatedItems = [...cart, productToAdd];
     setCart(updatedItems);
@@ -51,12 +51,12 @@ const Home = (): JSX.Element => {
           <button className="button">SHOP</button>
         </div>
         <section className={!showCart ? "hide" : "cart-parent-container"}>
-          <Cart />
+          <Cart allItems={cart} toggleCart={toggleCart} />
         </section>
       </header>
       <section className="products-parent-container">
         {products.length ? (
-          <ProductList allProducts={products} addToCart={addToCart} />
+          <ProductList allProducts={products} addItem={addItem} />
         ) : null}
       </section>
     </main>

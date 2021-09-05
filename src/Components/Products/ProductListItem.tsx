@@ -1,12 +1,10 @@
-import useState from "react";
-
 interface Props {
   id: string;
   title: string;
   image: string;
   brand: string;
   price: number;
-  addToCart(item: any): void;
+  addItem(item: any): void;
 }
 
 const ProductListItem: React.FC<Props> = ({
@@ -15,10 +13,10 @@ const ProductListItem: React.FC<Props> = ({
   image,
   brand,
   price,
-  addToCart,
+  addItem,
 }): JSX.Element => {
   const handeClick = (): void => {
-    addToCart(id);
+    addItem(id);
   };
   return (
     <div className="product">
