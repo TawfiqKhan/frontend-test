@@ -28,9 +28,13 @@ const Home = (): JSX.Element => {
   };
 
   const addItem = (id: string): void => {
-    const productToAdd = products.filter((product) => product._id === id)[0];
-    const updatedItems = [...cart, productToAdd];
-    setCart(updatedItems);
+    // Not dealing with quantities, so only adding if item not in the cart
+    const currentItem = cart.find((item) => item._id === id);
+    if (!currentItem) {
+      const productToAdd = products.filter((product) => product._id === id)[0];
+      const updatedItems = [...cart, productToAdd];
+      setCart(updatedItems);
+    }
   };
 
   const removeItem = (id: string): void => {

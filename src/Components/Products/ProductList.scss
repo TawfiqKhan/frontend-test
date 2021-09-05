@@ -63,6 +63,9 @@
         color: #fff;
         font-size: 1rem;
         cursor: pointer;
+        &:hover {
+          color: #d6acdb;
+        }
       }
       span {
         font-weight: 600;
