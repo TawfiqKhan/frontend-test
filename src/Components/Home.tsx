@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Home.scss";
 import bg from "../images/bg-main.png";
 import Nav from "./Nav";
+import Cart from "./Cart/Cart";
 import ProductList from "./Products/ProductList";
 import axios from "axios";
 
@@ -49,6 +50,9 @@ const Home = (): JSX.Element => {
         {products.length ? (
           <ProductList allProducts={products} addToCart={addToCart} />
         ) : null}
+      </section>
+      <section className="cart-parent-container">
+        <Cart />
       </section>
     </main>
   );
