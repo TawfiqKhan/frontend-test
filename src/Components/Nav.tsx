@@ -1,9 +1,6 @@
 import "./Nav.scss";
 
-const Nav = (): JSX.Element => {
-  const toggleCart = () => {
-    console.log("clicked");
-  };
+const Nav = ({ toggleCart }: any): JSX.Element => {
   return (
     <nav className="nav">
       <a href="/">Fülhaus Shop</a>

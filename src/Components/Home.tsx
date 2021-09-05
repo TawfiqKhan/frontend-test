@@ -16,6 +16,7 @@ interface Product {
 const Home = (): JSX.Element => {
   const [products, setProducts] = useState<Array<any>>([]);
   const [cart, setCart] = useState<Product[]>([]);
+  const [showCart, setShowCart] = useState<Boolean>(false);
 
   const fetchData = async () => {
     const { data } = await axios.get(
@@ -28,15 +29,19 @@ const Home = (): JSX.Element => {
     fetchData();
   }, []);
 
+  const toggleCart = () => {
+    setShowCart(!showCart);
+  };
+
   const addToCart = (id: any): void => {
     const productToAdd = products.filter((product) => product._id === id)[0];
     const updatedItems = [...cart, productToAdd];
     setCart(updatedItems);
   };
-
+  // style={{ marginRight: showCart ? "0" : "2%" }}
   return (
     <main>
-      <Nav />
+      <Nav toggleCart={toggleCart} />
       <header className="header">
         <div className="main-img-container">
           <img src={bg} className="main-img" alt="" />
@@ -45,14 +50,14 @@ const Home = (): JSX.Element => {
           <h2>Patio furniture</h2>
           <button className="button">SHOP</button>
         </div>
+        <section className={!showCart ? "hide" : "cart-parent-container"}>
+          <Cart />
+        </section>
       </header>
       <section className="products-parent-container">
         {products.length ? (
           <ProductList allProducts={products} addToCart={addToCart} />
         ) : null}
-      </section>
-      <section className="cart-parent-container">
-        <Cart />
       </section>
     </main>
   );

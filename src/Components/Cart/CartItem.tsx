@@ -9,8 +9,8 @@ const CartItem = (): JSX.Element => {
       </div>
       <div className="cart-product-summary">
         <div>
-          <span>Ivey Outdoor Dining Table Medium</span>
-          <span>MOE'S HOME COLLECTION CAN</span>
+          <span>Ivey Outdoor</span>
+          <span>MOE'S HOME</span>
         </div>
         <span>$1383</span>
       </div>
