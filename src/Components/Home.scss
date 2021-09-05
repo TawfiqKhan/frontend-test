@@ -68,5 +68,29 @@ main {
   display: none;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (max-width: 892px) {
+  .cart-parent-container {
+    width: 70%;
+  }
+  .product {
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .header {
+    .intro-container {
+      h2 {
+        font-size: 3.2rem;
+      }
+    }
+  }
+  .cart-parent-container {
+    width: 90%;
+  }
+  .products-parent-container {
+    padding: 0 1%;
+    .product {
+      width: 100%;
+    }
+  }
 }

@@ -8,7 +8,6 @@ type Props = {
 };
 
 const ProductList = ({ allProducts, addItem }: Props): JSX.Element => {
-  console.log(allProducts);
   const productsTodisplay = allProducts.map((product) => (
     <ProductListItem
       key={product._id}
