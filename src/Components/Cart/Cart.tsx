@@ -6,9 +6,16 @@ import { Product } from "../../interface/Product";
 type Props = {
   allItems: Array<Product>;
   toggleCart: () => void;
+  removeItem(id: string): void;
+  clearCart: () => void;
 };
 
-const Cart = ({ allItems, toggleCart }: Props): JSX.Element => {
+const Cart = ({
+  allItems,
+  toggleCart,
+  removeItem,
+  clearCart,
+}: Props): JSX.Element => {
   const [totalPrice, setTotalPrice] = useState<Number>(0);
 
   useEffect(() => {
@@ -29,6 +36,7 @@ const Cart = ({ allItems, toggleCart }: Props): JSX.Element => {
       image={item.itemLink}
       brand={item.vendorName}
       price={item.MSRP}
+      removeItem={removeItem}
     />
   ));
   return (
@@ -48,7 +56,7 @@ const Cart = ({ allItems, toggleCart }: Props): JSX.Element => {
           <div>
             <span>Total:</span> <span>${totalPrice}</span>
           </div>
-          <button>Check Out</button>
+          <button onClick={clearCart}>Check Out</button>
         </div>
       ) : null}
     </div>

@@ -33,12 +33,16 @@ const Home = (): JSX.Element => {
     setCart(updatedItems);
   };
 
-  const removeItem = (id: any): void => {
-    const productToAdd = products.filter((product) => product._id === id)[0];
-    const updatedItems = [...cart, productToAdd];
-    setCart(updatedItems);
+  const removeItem = (id: string): void => {
+    const updatedCart = cart.filter((product) => product._id !== id);
+    setCart(updatedCart);
   };
-  // style={{ marginRight: showCart ? "0" : "2%" }}
+
+  const clearCart = (): void => {
+    setCart([]);
+    setShowCart(false);
+  };
+
   return (
     <main>
       <Nav toggleCart={toggleCart} />
@@ -51,7 +55,12 @@ const Home = (): JSX.Element => {
           <button className="button">SHOP</button>
         </div>
         <section className={!showCart ? "hide" : "cart-parent-container"}>
-          <Cart allItems={cart} toggleCart={toggleCart} />
+          <Cart
+            allItems={cart}
+            toggleCart={toggleCart}
+            removeItem={removeItem}
+            clearCart={clearCart}
+          />
         </section>
       </header>
       <section className="products-parent-container">
